@@ -132,16 +132,6 @@ class ImportPmx(Operator, ImportHelper):
         description='Specify if mipmaps will be generated',
         default=True,
         )
-    sph_blend_factor = bpy.props.FloatProperty(
-        name='influence of .sph textures',
-        description='The diffuse color factor of texture slot for .sph textures',
-        default=1.0,
-        )
-    spa_blend_factor = bpy.props.FloatProperty(
-        name='influence of .spa textures',
-        description='The diffuse color factor of texture slot for .spa textures',
-        default=1.0,
-        )
     log_level = bpy.props.EnumProperty(
         name='Log level',
         description='Select log level',
@@ -191,8 +181,8 @@ class ImportPmx(Operator, ImportHelper):
                 use_underscore=self.use_underscore,
                 translator=self.__translator,
                 use_mipmap=self.use_mipmap,
-                sph_blend_factor=self.sph_blend_factor,
-                spa_blend_factor=self.spa_blend_factor,
+                sph_blend_factor=1.0,
+                spa_blend_factor=1.0,
                 )
             self.report({'INFO'}, 'Imported MMD model from "%s"'%self.filepath)
         except Exception as e:
